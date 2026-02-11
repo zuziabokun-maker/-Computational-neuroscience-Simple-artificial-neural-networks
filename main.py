@@ -15,4 +15,8 @@ if __name__ == '__main__':
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 print("Hello im guille")
+<<<<<<< HEAD
 print("Wello Horld")
+=======
+print("ABRACADABRA")
+>>>>>>> 2bc7c89af92a9eb1b7876831c59bbb5378dadac6
