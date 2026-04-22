@@ -22,7 +22,7 @@ class NeuralNetwork:
         ## link between input and hidden layers 
         self.wih = np.random.rand(self.input_size, self.hidden_size) # the size of the matrix is the size of the input layer by the size of the hidden layer. this is this way becuase of matrix multiplication
         ## link between hidden and output layers
-        self.who = np.random.rand(self.output_size, self.hidden_size)
+        self.who = np.random.rand(self.hidden_size, self.output_size)
 
         # activation function is the sigmoid function, read the signals from the hidden layer
         self.activation_function = lambda x: ss.expit(x)
@@ -33,6 +33,7 @@ class NeuralNetwork:
     
     # training the neural network
     def train(self):
+        
         pass
 
     # querying the neural network
@@ -42,7 +43,7 @@ class NeuralNetwork:
         # To calculate the signals entering the hidden layer, we multiply the weight matrix
         # (between the input and hidden layers) by the input signals.
         hidden_inputs = np.dot(self.wih, inputs)
-        
+
         # we calculate the signals emerging from the hidden layer
         hidden_outputs = self.activation_function(hidden_inputs)
 
@@ -58,3 +59,4 @@ class NeuralNetwork:
 
 # instance of neural network
 n = NeuralNetwork(input_size, hidden_size, output_size)
+
