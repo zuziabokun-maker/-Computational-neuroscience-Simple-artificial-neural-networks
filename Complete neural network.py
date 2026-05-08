@@ -1,8 +1,8 @@
-# python code for a neural network to learn the MNIST dataset
-# (c) Tariq Rashid, 2016
-# license is GPLv2
-# book: Make Your Own Neural Network
-# https://www.amazon.co.uk/Make-Your-Own-Neural-Network-ebook/dp/B01EER4Z4G
+
+
+# We have followed the methodology from the book.
+# book: Make Your Own Neural Network (https://www.amazon.co.uk/Make-Your-Own-Neural-Network-ebook/dp/B01EER4Z4G) for citing purposes
+
 
 import numpy
 # scipy.special for the sigmoid function expit()
@@ -108,16 +108,16 @@ n = neuralNetwork(input_nodes, hidden_nodes, output_nodes, learning_rate)
 
 # load the mnist training data CSV file into a list
 training_data_file = open("mnist_dataset/mnist_train_100.csv", 'r')
-training_data_list = training_data_file.readlines()
+training_data_list = training_data_file.readlines()[1:] # added [1:] to skip the header row
 training_data_file.close()
 
 # train the neural network
 # go through all records in the training data set
 for record in training_data_list:
     # split the record by the ',' commas
-    all_values = record.split(',')
+    all_values = [v.strip().strip('"') for v in record.split(',')]  # strip "" from the data set
     # scale and shift the inputs
-    inputs = (numpy.asarray(all_values[1:]) / 255.0 * 0.99) + 0.01
+    inputs = (numpy.asarray(all_values[1:], dtype=float) / 255.0 * 0.99) + 0.01 # we added dtype = float to solve the overflow error
     # create the target output values (all 0.01, except the desired label
     # which is 0.99)
     targets = numpy.zeros(output_nodes) + 0.01
